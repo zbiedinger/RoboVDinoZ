@@ -61,6 +61,7 @@ namespace Robot_Vs_DinosZ
             DecreasePowereLevel();
 
             Console.WriteLine("-------------------------------");
+            Console.WriteLine("-------------------------------");
             Console.WriteLine($"{name} attacked {dino.type}");
             Console.WriteLine($"~~");
             Console.WriteLine($"{dino.type}'s health: {dino.health}");

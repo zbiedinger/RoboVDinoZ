@@ -67,6 +67,8 @@ namespace Robot_Vs_DinosZ
             Console.WriteLine($"~~");
             Console.WriteLine($"{robo.name}'s health: {robo.health}");
             Console.WriteLine($"{type}'s power level: {energy}\n");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("-------------------------------");
         }
 
         //Change Attack

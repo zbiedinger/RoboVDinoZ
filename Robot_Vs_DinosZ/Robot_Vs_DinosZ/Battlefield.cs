@@ -32,9 +32,9 @@ namespace Robot_Vs_DinosZ
         //Then set the defaultSettings operator accordingly.
         public void ManualOrDefault()
         {
-            Console.WriteLine("\n\n///////////////////////////////////\n");
-            Console.WriteLine("         START OF NEW GAME");
-            Console.WriteLine("\n///////////////////////////////////\n");
+            ArtWork("start");
+            Console.WriteLine("Manual: Choose worriors and change weapons after each attack.");
+            Console.WriteLine("Default: Everything is picked at random and no user input.\n");
             Console.WriteLine("Manual or Default settings? m or d");
             string answer = Console.ReadLine();
             if (answer == "m")
@@ -127,6 +127,8 @@ namespace Robot_Vs_DinosZ
                     Console.WriteLine("\n                  FARM BATTLE!");
                     break;
                 case "robot":
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
                     Console.WriteLine("        \\_/\n" +
                         "       (* *)\n" +
                         "      __)#(__\n" +
@@ -135,14 +137,20 @@ namespace Robot_Vs_DinosZ
                         ">== () |   | () /\n" +
                         "      _(___)_\n" +
                         "     [-]   [-]\n");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
                     break;
                 case "dino":
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
                     Console.WriteLine("                 __\n" +
                         "                / _)\n" +
                         "      _.----._ / /\n" +
                         "     /         /\n" +
                         " __ /  (  | (  |\n" +
                         "/ __.- '|_|--|_|\n");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
                     break;
                 case "missed":
       Console.WriteLine("   _____  .___  _________ ____________________________    \n" +
@@ -152,6 +160,23 @@ namespace Robot_Vs_DinosZ
                         "\\____|__  /___/_______  /_______  //_______  //_______  / \n" +
                         "        \\/            \\/        \\/         \\/         \\/ \n");
                     break;
+                case "battle":
+                    Console.WriteLine("\n<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("         BATTLE BEGINS");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>");
+                    Console.WriteLine("<><><><><><><><><><><><><><><><>\n");
+                    break;
+                case "start":
+                    Console.WriteLine("\n\n///////////////////////////////////\n");
+                    Console.WriteLine("         START OF NEW GAME");
+                    Console.WriteLine("\n///////////////////////////////////\n");
+                    break;
+                case "--":
+                    Console.WriteLine("-------------------------------");
+                    Console.WriteLine("-------------------------------");
+                    break;
+
             }
         }
 
@@ -217,11 +242,7 @@ namespace Robot_Vs_DinosZ
             herd.ChooseDinoHerd(numberInBattle, defaultSettings);
 
 
-            Console.WriteLine("\n<><><><><><><><><><><><><><><><>");
-            Console.WriteLine("<><><><><><><><><><><><><><><><>");
-            Console.WriteLine("         BATTLE BEGINS");
-            Console.WriteLine("<><><><><><><><><><><><><><><><>");
-            Console.WriteLine("<><><><><><><><><><><><><><><><>\n");
+            ArtWork("battle");
 
             //Actual battle. Will continue until all of one team is dead.
             while (fleet.fleetOfRobots.Count != 0 && herd.herdOfDinos.Count != 0)
@@ -232,12 +253,16 @@ namespace Robot_Vs_DinosZ
                     Console.WriteLine($"{fleet.fleetOfRobots[0].name} has low power and can't attack this round!\n");
                     fleet.fleetOfRobots[0].powerLevel = 50;
                     herd.herdOfDinos[0].DinoAttack(fleet.fleetOfRobots[0], 10);
+                    ArtWork("--");
                 }
                 else if (herd.herdOfDinos[0].energy == 0)
                 {
                     Console.WriteLine($"{herd.herdOfDinos[0].type} has low energy and can't attack this round!\n");
+                    
                     herd.herdOfDinos[0].energy = 50;
                     fleet.fleetOfRobots[0].RobotAttacks(herd.herdOfDinos[0]);
+                    
+                    ArtWork("--");
                 }
                 else
                 {
@@ -248,7 +273,8 @@ namespace Robot_Vs_DinosZ
                     }
                     else
                     {
-                        Console.WriteLine("-------------------------------");
+                        ArtWork("--");
+
                         Console.WriteLine($"\n{fleet.fleetOfRobots[0].name}'s attack\n");
                         ArtWork("missed");
                     }
@@ -261,7 +287,7 @@ namespace Robot_Vs_DinosZ
                     {
                         Console.WriteLine($"\n{herd.herdOfDinos[0].type}'s attack\n");
                         ArtWork("missed");
-                        Console.WriteLine("-------------------------------");
+                        ArtWork("--");
                     }
                 }
 
