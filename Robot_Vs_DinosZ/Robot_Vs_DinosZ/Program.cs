@@ -10,6 +10,8 @@ namespace Robot_Vs_DinosZ
     {
         static void Main(string[] args)
         {
+            Battlefield battlefield = new Battlefield();
+            battlefield.HaveBattle();
         }
     }
 }
